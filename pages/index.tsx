@@ -96,6 +96,12 @@ const IndexPage = () => {
                         )
                       }
                     </div>
+                    {
+                      imageUrl.length === 0 && (<p className="text-gray-400 text-center">You may upload up to 5 images (including thumbnail)<br></br>Supported file types: jpeg, jpg, png</p>)
+                    }
+                    {
+                      imageUrl.length > 0 && (<p className="text-gray-400 text-center">You may upload up to {5 - imageUrl.length} images (including thumbnail)<br></br>Supported file types: jpeg, jpg, png</p>)
+                    }
                   </div>
                 )
               },

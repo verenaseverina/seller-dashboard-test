@@ -32,7 +32,7 @@ const Input = ({
         value={inputVal}
         placeholder={props.placeholder}
         className="mt-0 block w-full text-gray-400 px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black"
-        onChange={(e) => onChangeVal(e.target.value)}
+        onInput={(e: any) => onChangeVal(e.target.value)}
       />
     </div>
   )

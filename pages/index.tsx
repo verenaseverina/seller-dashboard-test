@@ -26,7 +26,7 @@ const IndexPage = () => {
             label="Product Name"
             value={productName}
             required={true}
-            onChange={(e) => setProductName(e.target.value)}
+            onChange={(e) => setProductName(e)}
           />
           <div className="w-full flex gap-4">
             <RadioInput
@@ -60,7 +60,7 @@ const IndexPage = () => {
             <Input
               label="Retail"
               value={priceValue}
-              onChange={(e) => setPriceValue(e.target.value)}
+              onChange={(e) => setPriceValue(e)}
             />
           </div>
           <div className="w-full mb-16">

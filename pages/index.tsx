@@ -36,10 +36,19 @@ const IndexPage = () => {
                 name: 'Image Gallery',
                 children: (
                   <div className="flex flex-col justify-center">
-                    <div className="h-80 flex items-center justify-center w-full">
+                    <div className="h-80 flex items-center justify-center w-full relative">
                       {
                         selectedImg ? (
-                          <img className="h-full" src={selectedImg}/>
+                          <>
+                            <img className="h-full" src={selectedImg}/>
+                            <button className="absolute top-0 right-0" onClick={() => {
+                              setImageUrl((prev) => {
+                                return prev.filter((item) => item !== selectedImg)
+                              })
+                            }}>
+                              <img src="/cross-button.svg" />
+                            </button>
+                          </>
                         ) : (
                           <div className="border-2 w-80 h-full flex items-center justify-center">
                             <UploadImage 
@@ -72,7 +81,7 @@ const IndexPage = () => {
                         })
                       }
                       {
-                        !!imageUrl.length && (
+                        imageUrl.length > 0 && imageUrl.length < 5 && (
                           <div className="h-20">
                             <UploadImage 
                               onChange={(url) => {

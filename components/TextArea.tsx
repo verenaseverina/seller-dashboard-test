@@ -9,7 +9,7 @@ type Props = {
   onChange?: (val) => void;
 }
 
-const Input = ({
+const TextArea = ({
   required = false,
   ...props
 }: Props) => {
@@ -39,4 +39,4 @@ const Input = ({
   )
 }
 
-export default Input
+export default TextArea

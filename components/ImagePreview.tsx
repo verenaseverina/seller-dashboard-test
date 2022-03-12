@@ -12,7 +12,7 @@ const ImagePreview = (props: Props) => {
       {props.imgValue ? (
         <>
           <img className="w-full" src={props.imgValue} alt="thumbnail" />
-          {props.nameValue && <p>{props.nameValue}</p>}
+          {props.nameValue && <p className="font-bold">{props.nameValue}</p>}
           {props.priceValue && <p>{props.priceValue}</p>}
         </>
       ) : (

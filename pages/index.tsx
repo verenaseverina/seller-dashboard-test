@@ -4,7 +4,8 @@ import ImagePreview from "../components/ImagePreview";
 import UploadThumbnail from "../components/UploadThumbnail";
 import Input from "../components/Input";
 import RadioInput from "../components/RadioInput";
-import TextArea from "../components/TextArea";
+import TextArea from "../components/TextArea"
+import Tag from "../components/Tag";;
 
 const IndexPage = () => {
   const [imageUrl, setImageUrl] = useState<string>("");
@@ -40,6 +41,11 @@ const IndexPage = () => {
               onChange={(url) => setImageUrl(url)}
             />
           </div>
+          <Tag 
+            label="Brand (up to 2)"
+            required={true}
+            placeholder="Add a keyword and press Enter"
+          />
           <TextArea 
             label="Description"
             required={true}

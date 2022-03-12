@@ -4,6 +4,7 @@ import ImagePreview from "../components/ImagePreview";
 import UploadThumbnail from "../components/UploadThumbnail";
 import Input from "../components/Input";
 import RadioInput from "../components/RadioInput";
+import TextArea from "../components/TextArea";
 
 const IndexPage = () => {
   const [imageUrl, setImageUrl] = useState<string>("");
@@ -39,6 +40,11 @@ const IndexPage = () => {
               onChange={(url) => setImageUrl(url)}
             />
           </div>
+          <TextArea 
+            label="Description"
+            required={true}
+            max={200}
+          />
           <div className="w-full">
             <RadioInput
               label="Condition"

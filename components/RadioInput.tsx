@@ -32,6 +32,7 @@ const RadioInput = ({ options, required, ...props }: Props) => {
             return (
               <button
                 className="bg-black text-white w-24 h-10"
+                key={option}
                 onClick={() => onChangeSelected(option)}
               >
                 {option}
@@ -40,6 +41,7 @@ const RadioInput = ({ options, required, ...props }: Props) => {
           return (
             <button
               className="border border-black w-24 h-10"
+              key={option}
               onClick={() => onChangeSelected(option)}
             >
               {option}

@@ -2,3 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.img-preview-container {
+  min-height: 450px;
+  width: 68%;
+}
+.img-preview {
+  width: 100%;
+}

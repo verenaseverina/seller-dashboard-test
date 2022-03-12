@@ -8,19 +8,24 @@ type Props = {
 
 const ImagePreview = (props: Props) => {
   return (
-    <div>
+    <div className="img-preview-container flex flex-col items-center justify-center text-center shadow-md">
       {
         props.imgValue ? (
           <>
-            <img src={props.imgValue} alt="thumbnail"/>
+            <img className="img-preview" src={props.imgValue} alt="thumbnail"/>
             {props.nameValue && <p>{props.nameValue}</p>}
             {props.priceValue && <p>{props.priceValue}</p>}
           </>
         ) :
         (
-          <p>
-            Nothing to preview! Start adding product details on the right.
-          </p>
+          <>
+            <p className="font-medium text-gray-400">
+              Nothing to preview!
+            </p>
+            <p className="font-medium text-gray-400">
+              Start adding product details on the right.
+            </p>
+          </>
         )
       }
     </div>

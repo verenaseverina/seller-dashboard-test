@@ -1,4 +1,4 @@
-export default function Example() {
+export default function Header() {
   return (  
   <div className="mx-auto flex justify-between bg-black">
     <div className="flex justify-start items-center px-10 py-1 space-x-36 text-white font-medium">

@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import Layout from "../components/Layout";
 import ImagePreview from "../components/ImagePreview";
 import UploadThumbnail from "../components/UploadThumbnail";
+import UploadImage from "../components/UploadImage";
 import Input from "../components/Input";
 import RadioInput from "../components/RadioInput";
 import TextArea from "../components/TextArea"
-import Tag from "../components/Tag";;
+import Tag from "../components/Tag";
+import Tabs from "../components/Tabs";
 
 const IndexPage = () => {
   const [imageUrl, setImageUrl] = useState<string>("");
@@ -15,11 +17,32 @@ const IndexPage = () => {
   return (
     <Layout>
       <div className="grid grid-cols-2 divide-x">
-        <div className="flex justify-center">
-          <ImagePreview
-            imgValue={imageUrl}
-            nameValue={productName}
-            priceValue={priceValue}
+        <div className="flex justify-center px-8">
+          <Tabs
+            tabs={[
+              {
+                key: 'gallery',
+                name: 'Image Gallery',
+                children: (
+                  <div className="flex justify-center">
+                    <UploadImage />
+                  </div>
+                )
+              },
+              {
+                key: 'preview',
+                name: 'Preview',
+                children: (    
+                  <div className="flex justify-center">
+                    <ImagePreview
+                      imgValue={imageUrl}
+                      nameValue={productName}
+                      priceValue={priceValue}
+                    />
+                  </div>
+                )
+              },
+            ]}
           />
         </div>
         <div className="flex flex-col items-center px-8 py-16">

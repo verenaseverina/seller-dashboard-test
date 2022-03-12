@@ -53,22 +53,28 @@ const UploadThumbnail = ({
 
   return (
     <div>
-      <p>{props.label}</p>
+      <p className="font-medium">{props.label}
+        {required && (<span className="ml-1 text-red-600">*</span>) }
+      </p>
       {
         url ? (
-          <div>
-            <img src={url} />
-            <button onClick={() => removeFile()}>Delete</button>
+          <div className="relative">
+            <img className="thumbnail-preview" src={url} />
+            <button className="absolute top-0 right-0" onClick={() => removeFile()}>
+              <img src="/cross-button.svg" />
+            </button>
           </div>
         ) : (
-          <div>
-            <span>Add Image</span>
+          <button className="relative bg-black flex gap-2 p-2 items-center hover:cursor-pointer">
+            <img src="/add-img-white.svg" />
+            <span className="text-white">Add Image</span>
             <input 
+              className="absolute w-full h-full top-0 left-0 hide-input-button hover:cursor-pointer"
               type="file"
               onChange={onChangeFile}
               accept="image/png, image/jpeg, image/jpg">
             </input>
-          </div>
+          </button>
         )
       }
     </div>

@@ -17,10 +17,6 @@ const Tabs = ({ tabs }: Props) => {
     return tabs.find(({ key }) => key === selectedTab)
   }, [tabs, selectedTab])
 
-  useEffect(() => {
-    setSelectedTab(tabs?.[0]?.key)
-  }, [tabs])
-
   return (
     <div className="w-full">
       <div className="w-full flex">

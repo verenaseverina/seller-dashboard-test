@@ -3,6 +3,7 @@ import Layout from '../components/Layout'
 import ImagePreview from '../components/ImagePreview'
 import UploadThumbnail from '../components/UploadThumbnail'
 import Input from '../components/Input'
+import RadioInput from '../components/RadioInput'
 
 const IndexPage = () => {
   const [imageUrl, setImageUrl] = useState<string>('');
@@ -26,11 +27,18 @@ const IndexPage = () => {
             required={true}
             onChange={(e) => setProductName(e.target.value)}
           />
-          <UploadThumbnail 
-            label="Thumbnail Image"
-            value={imageUrl}
-            onChange={(url) => setImageUrl(url)}
-          />
+          <div className="w-full flex gap-4">
+            <RadioInput
+              label="Category"
+              required={true}
+              options={['Collectibles', 'Accesories', 'T-Shirts']}
+            />
+            <UploadThumbnail 
+              label="Thumbnail Image"
+              value={imageUrl}
+              onChange={(url) => setImageUrl(url)}
+            />
+          </div>
           <div className="grid grid-cols-2 w-full gap-8">
             <Input 
               label="Season"

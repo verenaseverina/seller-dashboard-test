@@ -11,10 +11,13 @@ type Props = {
 const RadioInput = ({ options, required, ...props }: Props) => {
   const [selected, setSelected] = useState<string>(options?.[0]);
 
-  const onChangeSelected = useCallback((val: string) => (props.onChange || setSelected)(val), [props.onChange])
+  const onChangeSelected = useCallback(
+    (val: string) => (props.onChange || setSelected)(val),
+    [props.onChange]
+  );
 
   useEffect(() => {
-    setSelected(props.value)
+    setSelected(props.value);
   }, [props.value]);
 
   return (
@@ -24,21 +27,25 @@ const RadioInput = ({ options, required, ...props }: Props) => {
         {required && <span className="ml-1 text-red-600">*</span>}
       </p>
       <div className="flex gap-4">
-        {
-          options.map((option: string) => {
-            if (selected === option) return (
+        {options.map((option: string) => {
+          if (selected === option)
+            return (
               <button
                 className="bg-black text-white w-24 h-10"
                 onClick={() => onChangeSelected(option)}
               >
                 {option}
               </button>
-            )
-            return (
-              <button className="border border-black w-24 h-10" onClick={() => onChangeSelected(option)}>{option}</button>
-            )
-          })
-        }
+            );
+          return (
+            <button
+              className="border border-black w-24 h-10"
+              onClick={() => onChangeSelected(option)}
+            >
+              {option}
+            </button>
+          );
+        })}
       </div>
     </div>
   );

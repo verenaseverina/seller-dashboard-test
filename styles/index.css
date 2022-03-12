@@ -9,3 +9,9 @@
 .img-preview {
   width: 100%;
 }
+.hide-input-button {
+  opacity: 0%;
+}
+.thumbnail-preview {
+  width: 100%;
+}

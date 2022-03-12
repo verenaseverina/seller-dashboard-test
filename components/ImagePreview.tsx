@@ -8,7 +8,7 @@ type Props = {
 
 const ImagePreview = (props: Props) => {
   return (
-    <div className="img-preview-container flex flex-col items-center justify-center text-center shadow-md">
+    <div className="h-fit img-preview-container flex flex-col items-center justify-center text-center shadow-md">
       {
         props.imgValue ? (
           <>

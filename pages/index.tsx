@@ -1,14 +1,17 @@
-import Link from 'next/link'
 import Layout from '../components/Layout'
+import ImagePreview from '../components/ImagePreview'
+import UploadThumbnail from '../components/UploadThumbnail'
 
 const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
+  <Layout>
+    <div>
+      <ImagePreview />
+    </div>
+    <div>
+      <UploadThumbnail 
+        label="Thumbnail Image"
+      />
+    </div>
   </Layout>
 )
 

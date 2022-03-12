@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout";
 import ImagePreview from "../components/ImagePreview";
 import UploadThumbnail from "../components/UploadThumbnail";
@@ -10,9 +10,20 @@ import Tag from "../components/Tag";
 import Tabs from "../components/Tabs";
 
 const IndexPage = () => {
-  const [imageUrl, setImageUrl] = useState<string>("");
+  const [imageUrl, setImageUrl] = useState<string[]>([]);
+  const [selectedImg, setSelectedImg] = useState<string>('');
   const [productName, setProductName] = useState<string>("");
   const [priceValue, setPriceValue] = useState<string>("");
+  
+  useEffect(() => {
+    if (!imageUrl.length) {
+      setSelectedImg('')
+    } else if (!imageUrl.includes(selectedImg)) {
+      setSelectedImg(imageUrl[0])
+    } else if (!selectedImg && imageUrl.length) {
+      setSelectedImg(imageUrl[0])
+    }
+  }, [imageUrl, selectedImg])
 
   return (
     <Layout>
@@ -24,8 +35,58 @@ const IndexPage = () => {
                 key: 'gallery',
                 name: 'Image Gallery',
                 children: (
-                  <div className="flex justify-center">
-                    <UploadImage />
+                  <div className="flex flex-col justify-center">
+                    <div className="h-80 flex items-center justify-center w-full">
+                      {
+                        selectedImg ? (
+                          <img className="h-full" src={selectedImg}/>
+                        ) : (
+                          <div className="border-2 w-80 h-full flex items-center justify-center">
+                            <UploadImage 
+                              onChange={(url) => {
+                                setImageUrl((prev) => {
+                                  const newValue = [...prev]
+                                  newValue.push(url)
+                                  return newValue
+                                })
+                              }}
+                            />
+                          </div>
+                        )
+                      }
+                    </div>
+                    <div className="flex items-center justify-center w-full mt-8 h-20 gap-4">
+                      {
+                        imageUrl.filter(Boolean).map((img) => {
+                          return (
+                            <div
+                              className="h-20"
+                              key={img}
+                              onClick={() => {
+                                setSelectedImg(img);
+                              }}
+                            >
+                              <img src={img} className="h-full" />
+                            </div>
+                          )
+                        })
+                      }
+                      {
+                        !!imageUrl.length && (
+                          <div className="h-20">
+                            <UploadImage 
+                              onChange={(url) => {
+                                setImageUrl((prev) => {
+                                  const newValue = [...prev]
+                                  newValue.push(url)
+                                  return newValue
+                                })
+                              }}
+                            />
+                          </div>
+                        )
+                      }
+                    </div>
                   </div>
                 )
               },
@@ -35,7 +96,7 @@ const IndexPage = () => {
                 children: (    
                   <div className="flex justify-center">
                     <ImagePreview
-                      imgValue={imageUrl}
+                      imgValue={imageUrl[0]}
                       nameValue={productName}
                       priceValue={priceValue}
                     />
@@ -60,8 +121,18 @@ const IndexPage = () => {
             />
             <UploadThumbnail
               label="Thumbnail Image"
-              value={imageUrl}
-              onChange={(url) => setImageUrl(url)}
+              value={imageUrl[0]}
+              onChange={(url) => {
+                setImageUrl((prev) => {
+                  const newValue = [...prev]
+                  if (!url) {
+                    newValue.shift()
+                  } else {
+                    newValue.unshift(url)
+                  }
+                  return newValue
+                })
+              }}
             />
           </div>
           <Tag 

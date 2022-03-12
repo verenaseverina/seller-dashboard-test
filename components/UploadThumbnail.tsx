@@ -25,7 +25,6 @@ const UploadThumbnail = ({
     required = true,
     ...props
   }: Props) => {
-  const [file, setFile] = useState<File | null>(null);
   const [url, setUrl] = useState<string>('');
 
   const onChangeFile = useCallback(async (e: any) => {
@@ -34,9 +33,7 @@ const UploadThumbnail = ({
     if (props.onChange) {
       props.onChange(urlFile, 
         selectedFile);
-      setFile(selectedFile)
     } else {
-      setFile(selectedFile)
       setUrl(urlFile)
     }
   }, [props.onChange])
@@ -44,7 +41,6 @@ const UploadThumbnail = ({
   const removeFile = () => {
     props.onChange?.('', null);
     setUrl('');
-    setFile(null);
   }
 
   useEffect(() => {

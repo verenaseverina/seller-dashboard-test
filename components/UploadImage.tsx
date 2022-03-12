@@ -43,7 +43,7 @@ const UploadThumbnail = (props: Props) => {
   }, [props.value]);
 
   return (
-    <div className="w-full">
+    <div>
       {
         url ? (
           <div className="relative w-full">
@@ -53,16 +53,16 @@ const UploadThumbnail = (props: Props) => {
             </button>
           </div>
         ) : (
-          <button className="relative bg-black flex gap-2 p-2 items-center hover:cursor-pointer">
-            <img src="/add-img-white.svg" />
-            <span className="text-white">Add Image</span>
+          <div className="flex flex-col justify-center items-center relative">
+            <img src="/add-img-black.svg" />
+            <span className="text-black">Add Image</span>
             <input 
               className="absolute w-full h-full top-0 left-0 opacity-0 hover:cursor-pointer"
               type="file"
               onChange={onChangeFile}
               accept="image/png, image/jpeg, image/jpg">
             </input>
-          </button>
+          </div>
         )
       }
     </div>

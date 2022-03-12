@@ -39,6 +39,12 @@ const IndexPage = () => {
               onChange={(url) => setImageUrl(url)}
             />
           </div>
+          <div className="w-full">
+            <RadioInput
+              label="Condition"
+              options={['Bad', 'Fair', 'Good', 'New']}
+            />
+          </div>
           <div className="grid grid-cols-2 w-full gap-8">
             <Input 
               label="Season"
